@@ -7,6 +7,7 @@ int main(){
 	cout<<"Enter no. of processes:	";
 	cin>>n;
 	int p[n], bt[n], at[n], t, wt=0, st=0;
+	float avt;
 	cout<<"Do you want to include arrival time? Y/N:	";
 	cin>>a;
 	for(i=0; i<n; i++){
@@ -47,24 +48,26 @@ int main(){
 	}
 	cout<<"\nArrival time:  ";
 	for(i=0; i<n; i++){
-		cout<<at[i]<<"  ";
+		cout<<at[i]<<"   ";
+	}
+	cout<<"\nBurst time:    ";
+	for(i=0; i<n; i++){
+		cout<<bt[i]<<"   ";
 	}
 	t=0;
 	cout<<"\nWaiting time:  ";
 	for(i=0; i<n; i++){
-		cout<<wt<<"  ";
+		cout<<wt<<"   ";
 		st = st + bt[i];
-		if(st>at[i]){
-			wt = st - at[i];
+		if(i!=n-1 && st>at[i+1]){
+			wt = st - at[i+1];
 		}else{
 			wt = 0;
 		}
-		if(i != n-1)
-			t = t + wt;
+		t = t + wt;
 	}
-	t = t/n;
-	cout<<"\nAverage waiting time is "<<t<<endl;
+	avt = (float)t/n;
+	cout<<"\nAverage waiting time is "<<avt<<endl;
 
-cin>>i;
 return 0;
 }
