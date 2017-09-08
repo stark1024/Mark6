@@ -45,13 +45,14 @@ int main(){
 				}
 			}
 		}
+		st=bt[0]+at[0];
 		for(i=1; i<n-1; i++){
-			st = st + bt[i];
 			for(j=i; at[j]<st && j<n-1; j++){
 			    if(bt[j]>bt[j+1]){
 			        swap(at, bt, p, j);
 			    }
 	    	}
+	    	st = st + bt[i+1];
 		}
 	}else{
 		for(i=0; i<n; i++){
@@ -80,16 +81,16 @@ int main(){
 	for(i=0; i<n; i++){
 		cout<<bt[i]<<"   ";
 	}
-	t=0, st=0;
+	t=0, st=bt[0]+at[0];
 	cout<<"\nWaiting time:  ";
 	for(i=0; i<n; i++){
 		cout<<wt<<"   ";
-		st = st + bt[i];
 		if(i!=n-1 && st>at[i+1]){
 			wt = st - at[i+1];
 		}else{
 			wt = 0;
 		}
+		st = st + bt[i+1];
 		t = t + wt;
 	}
 	avt = (float)t/n;
